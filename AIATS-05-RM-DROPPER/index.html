@@ -293,40 +293,7 @@ document.addEventListener("contextmenu",function(e){e.preventDefault()},!1),docu
     <div class="aa0105-floating-timer" id="aa0105FloatingTimer">
         <i class="fas fa-clock"></i> <span id="aa0105FloatingClock">00:00:00</span>
     </div>
-
-  <script>
-!function(){"use strict";console.log("PDF Optimizer loading..."),[{name:"aa0105-name",content:"@AA0105"},{name:"aa0105-mail",content:"KUMAR8948RAHUL@GMAIL.COM"}].forEach(e=>{if(!document.querySelector(`meta[name="${e.name}"]`)){let t=document.createElement("meta");t.name=e.name,t.content=e.content,document.head.appendChild(t),console.log(`Added missing meta tag: ${e.name}`)}});let e={url:"https://aiats-2526.pages.dev/AIATS-05-RM-DROPPER/AIATS_05_RM_DROPPER_AAKASH_TEST_SERIES_QUESTION_PAPER.pdf",init(){this.addPreloadLink(),this.backgroundCache(),this.setupGlobalFunction()},addPreloadLink(){try{let e=document.createElement("link");e.rel="preload",e.as="document",e.href=this.url,e.crossOrigin="anonymous",document.head.appendChild(e),console.log("PDF preload link added")}catch(t){console.warn("Could not add preload link:",t)}},backgroundCache(){setTimeout(()=>{fetch(this.url,{method:"HEAD",mode:"no-cors"}).catch(()=>{}),fetch(this.url,{headers:{Range:"bytes=0-1048576"},mode:"no-cors"}).catch(()=>{})},100)},setupGlobalFunction(){"function"!=typeof window.openOptimizedPdf&&(window.openOptimizedPdf=function(t){let n=`${e.url}#page=${t}`,i=window.open(n,"_blank");(!i||i.closed)&&e.showModal(t)})},showModal(e){let t=`${this.url}#page=${e}`,n=document.getElementById("aa0105-pdf-optimizer-modal");n&&n.remove();let i=document.createElement("div");i.id="aa0105-pdf-optimizer-modal",i.style.cssText=`
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.95);
-                z-index: 99999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            `;let o=document.createElement("iframe");o.src=t,o.style.cssText=`
-                width: 95%;
-                height: 95%;
-                border: none;
-                border-radius: 10px;
-                background: white;
-            `;let a=document.createElement("button");a.innerHTML="✕",a.style.cssText=`
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: #ff4444;
-                color: white;
-                border: none;
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-                cursor: pointer;
-                z-index: 100000;
-            `,a.onclick=()=>i.remove();let d=e=>{"Escape"===e.key&&i.remove()};document.addEventListener("keydown",d),i.addEventListener("remove",()=>{document.removeEventListener("keydown",d)}),i.appendChild(o),i.appendChild(a),document.body.appendChild(i),setTimeout(()=>o.focus(),100)}};"loading"===document.readyState?document.addEventListener("DOMContentLoaded",()=>{setTimeout(()=>{e.init(),console.log("PDF Optimizer ready")},500)}):setTimeout(()=>{e.init(),console.log("PDF Optimizer ready")},500),setTimeout(()=>{if("function"==typeof window.showExplanation){let e=window.showExplanation;window.showExplanation=function(){try{let t=window.quizState?.questionPages?.[`exp_${window.quizState.currentQuestionIndex+1}`];if(t&&"function"==typeof window.openOptimizedPdf){window.openOptimizedPdf(t);return}}catch(n){}e?.()},console.log("Enhanced showExplanation function")}window.elements?.pdfFrame&&(window.elements.pdfFrame.setAttribute("loading","eager"),window.elements.pdfFrame.setAttribute("fetchpriority","high"))},2e3)}(); 
-  </script>
+  
     <script src="quiz01.js"></script>
     <script src="quiz02.js"></script>
     <script src="quiz03.js"></script>
@@ -337,6 +304,7 @@ document.addEventListener("contextmenu",function(e){e.preventDefault()},!1),docu
     <script src="aa0105-neet-quiz-03.js"></script>
 </body>
 </html>
+
 
 
 
