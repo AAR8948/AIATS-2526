@@ -293,6 +293,214 @@ document.addEventListener("contextmenu",function(e){e.preventDefault()},!1),docu
     <div class="aa0105-floating-timer" id="aa0105FloatingTimer">
         <i class="fas fa-clock"></i> <span id="aa0105FloatingClock">00:00:00</span>
     </div>
+
+  <script>
+// pdf-optimizer.js - SAFE VERSION (No conflicts)
+(function() {
+    'use strict';
+    
+    console.log('PDF Optimizer loading...');
+    
+    // 1. FIX SECURITY - Add required meta tags
+    (function() {
+        // Check if meta tags exist (for your security scripts)
+        const requiredMetaTags = [
+            { name: 'aa0105-name', content: '@AA0105' },
+            { name: 'aa0105-mail', content: 'KUMAR8948RAHUL@GMAIL.COM' }
+        ];
+        
+        requiredMetaTags.forEach(tag => {
+            if (!document.querySelector(`meta[name="${tag.name}"]`)) {
+                const meta = document.createElement('meta');
+                meta.name = tag.name;
+                meta.content = tag.content;
+                document.head.appendChild(meta);
+                console.log(`Added missing meta tag: ${tag.name}`);
+            }
+        });
+    })();
+    
+    // 2. PDF PRELOADING - Separate from your quiz logic
+    const PDFConfig = {
+        url: 'https://aar8948.github.io/AIATS-2526/AIATS-05-RM-DROPPER/AIATS_05_RM_DROPPER_AAKASH_TEST_SERIES_QUESTION_PAPER.pdf',
+        
+        // Initialize PDF preloading
+        init() {
+            this.addPreloadLink();
+            this.backgroundCache();
+            this.setupGlobalFunction();
+        },
+        
+        // Method 1: HTML Preload (fastest)
+        addPreloadLink() {
+            try {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'document';
+                link.href = this.url;
+                link.crossOrigin = 'anonymous';
+                document.head.appendChild(link);
+                console.log('PDF preload link added');
+            } catch (e) {
+                console.warn('Could not add preload link:', e);
+            }
+        },
+        
+        // Method 2: Background cache
+        backgroundCache() {
+            // Silent background fetch
+            setTimeout(() => {
+                fetch(this.url, { 
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                }).catch(() => {});
+                
+                // Also cache first 1MB
+                fetch(this.url, {
+                    headers: { 'Range': 'bytes=0-1048576' },
+                    mode: 'no-cors'
+                }).catch(() => {});
+            }, 100);
+        },
+        
+        // Method 3: Safe global function (won't override yours)
+        setupGlobalFunction() {
+            // Only add if not already defined
+            if (typeof window.openOptimizedPdf !== 'function') {
+                window.openOptimizedPdf = function(pageNumber) {
+                    const url = `${PDFConfig.url}#page=${pageNumber}`;
+                    
+                    // Try new tab first
+                    const newTab = window.open(url, '_blank');
+                    
+                    // Fallback to modal if popup blocked
+                    if (!newTab || newTab.closed) {
+                        PDFConfig.showModal(pageNumber);
+                    }
+                };
+            }
+        },
+        
+        // PDF Modal (uses unique ID to avoid conflicts)
+        showModal(pageNumber) {
+            const url = `${this.url}#page=${pageNumber}`;
+            
+            // Remove existing modal if any
+            const oldModal = document.getElementById('aa0105-pdf-optimizer-modal');
+            if (oldModal) oldModal.remove();
+            
+            // Create modal with unique ID
+            const modal = document.createElement('div');
+            modal.id = 'aa0105-pdf-optimizer-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.95);
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            // Create iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.style.cssText = `
+                width: 95%;
+                height: 95%;
+                border: none;
+                border-radius: 10px;
+                background: white;
+            `;
+            
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '✕';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: #ff4444;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 100000;
+            `;
+            closeBtn.onclick = () => modal.remove();
+            
+            // ESC key to close
+            const escHandler = (e) => {
+                if (e.key === 'Escape') modal.remove();
+            };
+            document.addEventListener('keydown', escHandler);
+            
+            // Clean up on remove
+            modal.addEventListener('remove', () => {
+                document.removeEventListener('keydown', escHandler);
+            });
+            
+            modal.appendChild(iframe);
+            modal.appendChild(closeBtn);
+            document.body.appendChild(modal);
+            
+            // Focus iframe for keyboard navigation
+            setTimeout(() => iframe.focus(), 100);
+        }
+    };
+    
+    // 3. INITIALIZE WHEN SAFE
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                PDFConfig.init();
+                console.log('PDF Optimizer ready');
+            }, 500);
+        });
+    } else {
+        setTimeout(() => {
+            PDFConfig.init();
+            console.log('PDF Optimizer ready');
+        }, 500);
+    }
+    
+    // 4. OPTIONAL: Integrate with your existing quiz (if detected)
+    // This part is safe - it only adds enhancement if your quiz exists
+    setTimeout(() => {
+        // If your quiz has a showExplanation function, enhance it
+        if (typeof window.showExplanation === 'function') {
+            const originalShowExplanation = window.showExplanation;
+            window.showExplanation = function() {
+                try {
+                    // Try to get page number from your quiz state
+                    const pageNum = window.quizState?.questionPages?.[`exp_${window.quizState.currentQuestionIndex + 1}`];
+                    if (pageNum && typeof window.openOptimizedPdf === 'function') {
+                        window.openOptimizedPdf(pageNum);
+                        return;
+                    }
+                } catch (e) {
+                    // Fallback to original function
+                }
+                originalShowExplanation?.();
+            };
+            console.log('Enhanced showExplanation function');
+        }
+        
+        // Enhance PDF viewer if detected
+        if (window.elements?.pdfFrame) {
+            window.elements.pdfFrame.setAttribute('loading', 'eager');
+            window.elements.pdfFrame.setAttribute('fetchpriority', 'high');
+        }
+    }, 2000);
+})();   
+  </script>
     <script src="quiz01.js"></script>
     <script src="quiz02.js"></script>
     <script src="quiz03.js"></script>
@@ -303,4 +511,5 @@ document.addEventListener("contextmenu",function(e){e.preventDefault()},!1),docu
     <script src="aa0105-neet-quiz-03.js"></script>
 </body>
 </html>
+
 
