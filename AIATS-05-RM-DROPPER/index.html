@@ -1,0 +1,301 @@
+<!--
+Contact us for custom AI-powered website development.
+
+• Static and dynamic websites available.
+• Free for students or offered at a very minimal charge.
+• Standard pricing applies for others (reasonable and competitive).
+• Any type of custom website can be developed.
+• Full monetization support — start earning from your website.
+• No strict eligibility criteria for monetization.
+• Monetization setup can begin within one month.
+
+copy source code not valid ie not work logic.
+
+contact -  kumar8948rahul@gmail.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>AIATS 05 RM | Online Quiz Test Practice Questions with Instant Results</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Take a free online quiz with instant results and performance analysis. Practice questions and improve your score.">
+<meta name="robots" content="index, follow">
+<meta name="aa0105-name" content="@AA0105">
+<meta name="aa0105-mail" content="KUMAR8948RAHUL@GMAIL.COM">
+<meta property="og:title" content="Online Quiz Test">
+<meta property="og:description" content="Free online quiz with instant scoring and detailed results.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com/yourpage">
+<meta name="twitter:card" content="summary">
+
+  <link rel="canonical" href="https://yourdomain.com/yourpage">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+document.addEventListener("contextmenu",function(e){e.preventDefault()},!1),document.addEventListener("keydown",function(e){"F12"===e.key&&e.preventDefault(),e.ctrlKey&&["u","s","c","x","a","i","j"].includes(e.key.toLowerCase())&&e.preventDefault(),e.ctrlKey&&e.shiftKey&&["i","j","c"].includes(e.key.toLowerCase())&&e.preventDefault()},!1),document.addEventListener("selectstart",function(e){e.preventDefault()},!1);
+</script>
+
+    <style>
+        .aa0105-performance-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .aa0105-performance-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .aa0105-performance-value.aa0105-excellent {
+            color: #4bb543;
+        }
+
+        .aa0105-performance-value.aa0105-good {
+            color: #ffc107;
+        }
+
+        .aa0105-performance-value.aa0105-poor {
+            color: #f72585;
+        }
+        
+        .aa0105-pdf-container {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+        }
+        
+        .aa0105-pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .aa0105-page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .aa0105-page-input {
+            width: 120px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .aa0105-pdf-container {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .aa0105-pdf-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="aa0105-loading-screen" id="aa0105LoadingScreen">
+        <div class="aa0105-spinner"></div>
+        <h2>Loading Quiz...</h2>
+    </div>
+
+    <div class="aa0105-container">
+        <div class="aa0105-header">
+            <h1><i class="fas fa-graduation-cap"></i> AIATS-05 RM NEET DROPPER</h1>
+            <p>send feedback for improvement - kumar8948rahul@gmail.com</p>
+        </div>
+
+        <div class="aa0105-quiz-container" id="aa0105QuizContainer">
+            <div class="aa0105-quiz-info">
+                <div class="aa0105-timer"><i class="fas fa-clock"></i> Time: <span id="aa0105Clock">00:00:00</span></div>
+                <div class="aa0105-question-counter">Question <span id="aa0105CurrentQuestion">1</span> of <span id="aa0105TotalQuestions">180</span></div>
+                <div class="aa0105-score-display"><i class="fas fa-star"></i> Score: <span id="aa0105CurrentScore">0</span></div>
+            </div>
+
+            <div class="aa0105-progress-container">
+                <div class="aa0105-progress-bar" id="aa0105ProgressBar" style="width: 0%"></div>
+            </div>
+                
+                <div class="aa0105-page-nav">
+                    <button class="aa0105-btn aa0105-btn-prev-page" id="aa0105PrevPageBtn">
+                        <i class="fas fa-chevron-left"></i> AIATS-05
+                    </button>
+                    <div>
+                        <span>Page: </span>
+                        <input type="number" id="aa0105CurrentPage" class="aa0105-page-input" min="1" value="1">
+                        <span> of <span id="aa0105TotalPages">0</span></span>
+                    </div>
+                    <button class="aa0105-btn aa0105-btn-next-page" id="aa0105NextPageBtn">
+                        DROPPER-RM <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="aa0105-pdf-container">
+                    <iframe id="aa0105PdfFrame" class="aa0105-pdf-frame" 
+                            src=""
+                            title="Question PDF">
+                    </iframe>
+                </div>
+
+
+            <div class="aa0105-question-jump">
+                <input type="number" id="aa0105JumpToQuestion" min="1" max="180" placeholder="Jump to question">
+                <button class="aa0105-btn aa0105-btn-jump" id="aa0105JumpBtn">Go-Specific question</button>
+            </div>
+
+            <div class="aa0105-question-area">
+                <div class="aa0105-question-number">Question <span id="aa0105QuestionNumber">1</span></div>
+
+
+
+                
+                <button class="aa0105-btn aa0105-btn-explanation" id="aa0105ExplanationBtn" style="display: none;">
+                    <i class="fas fa-lightbulb"></i> Explanation
+                </button>
+            </div>
+
+            <div class="aa0105-options-container" id="aa0105OptionsContainer">
+                <!-- Options will be inserted here by JavaScript -->
+            </div>
+
+            <div class="aa0105-controls">
+                <button class="aa0105-btn aa0105-btn-prev" id="aa0105PrevBtn">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <div>
+                    <button class="aa0105-btn aa0105-btn-submit-question" id="aa0105SubmitQuestionBtn" style="display: none;">
+                        <i class="fas fa-check"></i> Submit Answer
+                    </button>
+                    <button class="aa0105-btn aa0105-btn-next" id="aa0105NextBtn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="aa0105-btn aa0105-btn-submit" id="aa0105SubmitBtn" style="display: none;">
+                        <i class="fas fa-paper-plane"></i> Submit Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="aa0105-results-container" id="aa0105ResultsContainer">
+            <div class="aa0105-results-header">
+                <h2><i class="fas fa-trophy"></i> Quiz Results</h2>
+                <p>Here's how you performed</p>
+            </div>
+
+            <div class="aa0105-results-stats">
+                <div class="aa0105-stat-card">
+                    <h3>Correct Answers</h3>
+                    <p class="aa0105-correct-stat" id="aa0105CorrectAnswers">0</p>
+                </div>
+                <div class="aa0105-stat-card">
+                    <h3>Incorrect Answers</h3>
+                    <p class="aa0105-incorrect-stat" id="aa0105IncorrectAnswers">0</p>
+                </div>
+                <div class="aa0105-stat-card">
+                     <h3>Skipped Questions</h3>
+                     <p class="aa0105-skipped-stat" id="aa0105SkippedAnswers">0</p>
+                </div>
+                <div class="aa0105-stat-card">
+                    <h3>Total Marks</h3>
+                    <p class="aa0105-marks-stat" id="aa0105TotalMarks">0</p>
+                </div>
+                
+                <div class="aa0105-stat-card">
+                    <h3>Time Taken</h3>
+                    <p class="aa0105-time-stat" id="aa0105TimeTaken">00:00:00</p>
+                </div>
+            </div>
+
+            <div class="aa0105-tab-container">
+                <div class="aa0105-tabs">
+                    <div class="aa0105-tab aa0105-active" data-tab="summary">Summary</div>
+                    <div class="aa0105-tab" data-tab="analysis">Detailed Analysis</div>
+                    <div class="aa0105-tab" data-tab="timing">Time Analysis</div>
+                </div>
+
+                <div class="aa0105-tab-content aa0105-active" id="aa0105SummaryTab">
+                    <div class="aa0105-progress-container">
+                        <div class="aa0105-progress-bar" id="aa0105ResultsProgressBar" style="width: 0%"></div>
+                    </div>
+                    <p>You answered <span id="aa0105CorrectCount">0</span> out of <span id="aa0105TotalCount">0</span> questions correctly.</p>
+                    <p>Time spent: <span id="aa0105TotalTimeSpent">0</span> minutes.</p>
+                </div>
+
+                <div class="aa0105-tab-content" id="aa0105AnalysisTab">
+                    <h3>Question Review</h3>
+                    <div class="aa0105-question-review" id="aa0105QuestionReview">
+                        <!-- Question reviews will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="aa0105-tab-content" id="aa0105TimingTab">
+                    <h3>Time Spent per Question</h3>
+                    <div class="aa0105-time-spent-chart" id="aa0105TimeSpentChart">
+                        <!-- Chart will be inserted here -->
+                    </div>
+                    <p>Average time per question: <span id="aa0105AvgTimePerQuestion">0</span> seconds</p>
+                    <p>Fastest question: #<span id="aa0105FastestQuestion">0</span> (<span id="aa0105FastestTime">0</span> seconds)</p>
+                    <p>Slowest question: #<span id="aa0105SlowestQuestion">0</span> (<span id="aa0105SlowestTime">0</span> seconds)</p>
+                </div>
+            </div>
+
+            <div class="aa0105-controls" style="justify-content: center; margin-top: 30px;">
+                <button class="aa0105-btn aa0105-btn-primary" id="aa0105RestartQuizBtn">
+                    <i class="fas fa-redo"></i> Restart Quiz
+                </button>
+                <button class="aa0105-btn aa0105-btn-info" id="aa0105ReviewAnswersBtn">
+                    <i class="fas fa-search"></i> Review Answers
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explanation Modal -->
+    <div class="aa0105-modal" id="aa0105ExplanationModal">
+        <div class="aa0105-modal-content">
+            <button class="aa0105-close-btn" id="aa0105CloseExplanation">&times;</button>
+            <h3 class="aa0105-modal-title"><i class="fas fa-lightbulb"></i> Explanation</h3>
+            <div class="aa0105-explanation-media">
+                <div class="aa0105-pdf-container">
+                    <iframe id="aa0105ExplanationPdfFrame" class="aa0105-pdf-frame" 
+                            src=""
+                            title="Explanation PDF">
+                    </iframe>
+                </div>
+            </div>
+            <div class="aa0105-explanation-text" id="aa0105ExplanationText"></div>
+        </div>
+    </div>
+
+    <!-- Floating Timer -->
+    <div class="aa0105-floating-timer" id="aa0105FloatingTimer">
+        <i class="fas fa-clock"></i> <span id="aa0105FloatingClock">00:00:00</span>
+    </div>
+    <script src="quiz01.js"></script>
+    <script src="quiz02.js"></script>
+    <script src="quiz03.js"></script>
+    <script src="quiz04.js"></script>
+    <script src="quiz05.js"></script>
+    <script src="aa0105-neet-quiz.js"></script>
+    <script src="aa0105-neet-quiz-01.js"></script>
+    <script src="aa0105-neet-quiz-02.js"></script>
+    <script src="aa0105-neet-quiz-03.js"></script>
+</body>
+</html>
